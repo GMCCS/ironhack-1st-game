@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Graduate' >
+    <link rel="stylesheet" href="gameCSS.css">
+
+    <title>BalizÀbaliza!</title>
+</head>
+
+<body>
+
+    <section class="info-left-div">
+        <div class="introduction">
+            Use the A and D to move around. <br> This will control the bottom player.
+        </div>
+        <div class="arrows-div">
+            <img src="images/Benfica-icon.png" alt="keyboard arrows">
+            You're playing with Benfica!
+        </div>
+        <div class="storyline-div">
+            The 1st player to score 10 goals WINS!
+        </div>
+    </section>
+
+    <section>
+        <canvas id="canvas-board" width="800" height="750" tabindex="1"></canvas>
+    </section>
+
+    <section class="info-right-div">
+        <div class="instructions-div">
+            Use the Left and Right to move around. <br> This will control the top player.
+        </div>
+        <div class="arrows-div">
+            <img src="images/Sporting-CP-Lisbon-icon.png" alt="keyboard arrows">
+            You're playing with Sporting!
+        </div>
+        <div class="funny-div">
+            funny stuff about each player
+        </div>
+    </section>
+
+    <script type="text/javascript" src="gameField.js"></script>
+    <script type="text/javascript" src="gameloop.js"></script>
+</body>
+
+
+</html>
