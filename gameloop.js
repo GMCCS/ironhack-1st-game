@@ -34,22 +34,22 @@ function makeRect(x, y, width, height, speed, color) {
 
 // Create the paddles
 let paddleWidth = 20;
-let paddleHeight = 80;
+let paddleHeight = 100;
 let leftPaddle = makeRect(
-  paddleWidth,
+  paddleWidth + 5,
   canvas.height / 2,
   paddleWidth,
   paddleHeight,
-  5,
-  "red"
+  7,
+  "black"
 );
 let rightPaddle = makeRect(
-  canvas.width - paddleWidth - 20,
+  canvas.width - paddleWidth - 25,
   canvas.height / 2,
   paddleWidth,
   paddleHeight,
-  5,
-  "green"
+  7,
+  "black"
 );
 
 // Keep track of the score
@@ -58,20 +58,20 @@ let rightScore = 0;
 
 // Create the ball
 let ballLength = 10;
-let ballSpeed = 6;
-let ball = makeRect(0, 0, ballLength, ballLength, ballSpeed, "yellow");
+let ballSpeed = 10;
+let ball = makeRect(0, 0, ballLength, ballLength, ballSpeed, "black");
 
 // Modify the ball object to have two speed properties, one for X and one for Y
-ball.sX = ballSpeed;
-ball.sY = ballSpeed / 2;
+ball.sY = ballSpeed;
+ball.sX = ballSpeed / 2;
 
-//Randomize initial direction
-if (Math.random() > 0.5) {
-  ball.sX *= 1;
-}
 //Randomize initial direction
 if (Math.random() > 0.5) {
   ball.sY *= 1;
+}
+//Randomize initial direction
+if (Math.random() > 0.5) {
+  ball.sX *= 1;
 }
 
 // Reset the ball's position and speed after scoring
@@ -149,9 +149,11 @@ function menu() {
 // Start the game
 function startGame() {
   // Don't accept any more clicks
+
   canvas.removeEventListener("click", startGame);
 
   // Put the ball in place
+
   resetBall();
 
   // Kick off the game loop
@@ -161,22 +163,21 @@ function startGame() {
 // Show the end game screen
 function endGame() {
   erase();
+
   ctx.fillStyle = "#000000";
   ctx.font = "24px Graduate";
   ctx.textAlign = "center";
-  let winner = 1;
-  if (rightScore === 10) winner = 2;
-  ctx.fillText(
-    "Player " + winner + " wins!",
-    canvas.width / 2,
-    canvas.height / 2
-  );
+
+  if (rightScore === 10) {
+    ctx.fillText("Sporting wins!", canvas.width / 2, canvas.height / 2);
+  } else if (leftScore === 10) {
+    ctx.fillText("Benfica wins!", canvas.width / 2, canvas.height / 2);
+  }
 }
 
 // Clear the canvas
 function erase() {
   ctx.fillStyle = "#FFFFFF";
-
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
@@ -242,6 +243,7 @@ function draw() {
   }
 
   // Draw the paddles and ball
+
   leftPaddle.draw();
   rightPaddle.draw();
   ball.draw();

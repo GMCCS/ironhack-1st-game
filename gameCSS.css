@@ -23,6 +23,12 @@ body {
     justify-content: space-around;
     background-color:rgb(207, 24, 24)
 }
+.instructions-div {
+    color:white;
+}
+.objective-div {
+    color:white;
+}
 
 .info-right-div {
     width: -webkit-fill-available;
@@ -33,6 +39,10 @@ body {
     justify-content: space-around;
     background-color:rgb(27, 114, 49)
 }
+.funny-div {
+    color:white;
+}
+
 
 .arrows-div {
     display:flex;
