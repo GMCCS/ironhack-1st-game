@@ -32,25 +32,41 @@ function makeRect(x, y, width, height, speed, color) {
   };
 }
 
-
 // Create the paddles
 let paddleWidth = 20;
 let paddleHeight = 100;
+
 let leftPaddle = makeRect(
-  paddleWidth,
+  paddleWidth - 5,
   canvas.height / 2 - paddleHeight / 2,
   paddleWidth,
   paddleHeight,
   7,
-  "black"
+  "red"
 );
 let rightPaddle = makeRect(
-  canvas.width - paddleWidth - 20,
+  canvas.width - paddleWidth - 10,
   canvas.height / 2 - paddleHeight / 2,
   paddleWidth,
   paddleHeight,
   7,
-  "black"
+  "white"
+);
+let leftMidPaddle = makeRect(
+  canvas.width / 3,
+  canvas.height / 2,
+  paddleWidth,
+  paddleHeight - 30,
+  7,
+  "white"
+);
+let rightMidPaddle = makeRect(
+  canvas.width - canvas.width / 3,
+  canvas.height / 2,
+  paddleWidth,
+  paddleHeight - 30,
+  7,
+  "red"
 );
 
 // Keep track of the score
@@ -58,8 +74,8 @@ let leftScore = 0;
 let rightScore = 0;
 
 // Create the ball
-let ballLength = 10;
-let ballSpeed = 20;
+let ballLength = 20;
+let ballSpeed = 10;
 let ball = makeRect(0, 0, ballLength, ballLength, ballSpeed, "black");
 
 // Modify the ball object to have two speed properties, one for X and one for Y
@@ -142,7 +158,7 @@ canvas.addEventListener("keyup", function(e) {
 
 // Show the menu
 function menu() {
-  erase();
+  // erase();
   //show the field with Start
   backgroundGrass();
 }
@@ -164,140 +180,11 @@ function startGame() {
 function endGame() {
   erase();
 
-  // ctx.fillStyle = "#000000";
-  // ctx.font = "24px Graduate";
-  // ctx.textAlign = "center";
-
   if (rightScore === 10) {
     ctx.fillText("Sporting wins!", canvas.width / 2, canvas.height / 2);
   } else if (leftScore === 10) {
     ctx.fillText("Benfica wins!", canvas.width / 2, canvas.height / 2);
   }
-}
-
-// Clear the canvas
-function erase() {
-  
-  base_image = new Image();
-  base_image.src = "/images/Screenshot 2019-10-22 at 21.45.19.png";
-  base_image.onload = function() {
-    ctx.drawImage(base_image, 0, 0);
-
-    //Now for the white lines to create the field
-    ctx.fillStyle = "white";
-    ctx.fillRect(400, 0, 5, 750); //middle white line
-
-    // inner rectangles
-
-    ctx.fillRect(0, 280, 40, 5); //left goal - in upper horizontal line
-    ctx.fillRect(0, 470, 40, 5); // left goal - in bottom horizontal line
-    ctx.fillRect(40, 280, 5, 195); //left goal - in vertical line
-
-    ctx.fillRect(760, 280, 40, 5); //right goal - in upper horizontal line
-    ctx.fillRect(760, 470, 40, 5); // right goal - in bottom horizontal line
-    ctx.fillRect(760, 280, 5, 195); //right goal - in vertical linne
-
-    //outside rectangles
-
-    ctx.fillRect(0, 135, 130, 5); //left goal - out upper horizontal line
-    ctx.fillRect(0, 615, 130, 5); // left goal - out bottom horizontal line
-    ctx.fillRect(130, 135, 5, 485); //left goal - out vertical line
-
-    ctx.fillRect(680, 150, 120, 5); //right goal - out upper horizontal line
-    ctx.fillRect(680, 600, 120, 5); // right goal - out bottom horizontal line
-    ctx.fillRect(680, 150, 5, 455); //right goal - out vertical line
-
-    ctx.beginPath();
-    ctx.arc(85, canvas.height / 2, 5, 0, 2 * Math.PI); // penalti left goal
-    ctx.fill();
-    ctx.closePath();
-
-    ctx.beginPath();
-    ctx.arc(720, canvas.height / 2, 5, 0, 2 * Math.PI); // penalti right goal
-    ctx.fill();
-    ctx.closePath();
-
-    // mid field circle out
-    ctx.beginPath();
-    ctx.strokeStyle = "white";
-    ctx.fillStyle = "transparent";
-    ctx.lineWidth = 5;
-    ctx.arc(400, 375, 85, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.closePath();
-
-    // mid field circle inner
-    ctx.beginPath();
-    ctx.strokeStyle = "white";
-    ctx.fillStyle = "white";
-    ctx.lineWidth = 5;
-    ctx.arc(402.5, 375, 7, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.closePath();
-
-    //upper left corner
-    ctx.beginPath();
-    ctx.strokeStyle = "white";
-    ctx.fillStyle = "transparent";
-    ctx.lineWidth = 5;
-    ctx.arc(0, 0, 25, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.closePath();
-
-    //upper right corner
-    ctx.beginPath();
-    ctx.strokeStyle = "white";
-    ctx.fillStyle = "transparent";
-    ctx.lineWidth = 5;
-    ctx.arc(800, 0, 25, 0, 1 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.closePath();
-
-    //bottom left corner
-    ctx.beginPath();
-    ctx.strokeStyle = "white";
-    ctx.fillStyle = "transparent";
-    ctx.lineWidth = 5;
-    ctx.arc(0, 750, 25, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.closePath();
-
-    //bottom right corner
-    ctx.beginPath();
-    ctx.strokeStyle = "white";
-    ctx.fillStyle = "transparent";
-    ctx.lineWidth = 5;
-    ctx.arc(800, 750, 25, 0, 1.5 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.closePath();
-
-    //left half 25m circle
-    ctx.beginPath();
-    ctx.strokeStyle = "white";
-    ctx.fillStyle = "transparent";
-    ctx.lineWidth = 5;
-    ctx.arc(50, canvas.height / 2, 115, 0.75, 1.75 * Math.PI, true);
-    ctx.fill();
-    ctx.stroke();
-    ctx.closePath();
-
-    //right half 25m circle
-
-    ctx.beginPath();
-    ctx.strokeStyle = "white";
-    ctx.fillStyle = "transparent";
-    ctx.lineWidth = 5;
-    ctx.arc(764, canvas.height / 2, 115, 2.35, 1.25 * Math.PI, false);
-    ctx.fill();
-    ctx.stroke();
-    ctx.closePath();
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-  };
 }
 
 // Main draw loop
@@ -306,15 +193,19 @@ function draw() {
   // Move the paddles
   if (keys.W) {
     leftPaddle.y -= leftPaddle.s;
+    rightMidPaddle.y -= rightMidPaddle.s;
   }
   if (keys.S) {
     leftPaddle.y += leftPaddle.s;
+    rightMidPaddle.y += rightMidPaddle.s;
   }
   if (keys.UP) {
     rightPaddle.y -= rightPaddle.s;
+    leftMidPaddle.y -= leftMidPaddle.s;
   }
   if (keys.DOWN) {
     rightPaddle.y += rightPaddle.s;
+    leftMidPaddle.y += leftMidPaddle.s;
   }
   // Move the ball
   ball.x += ball.sX;
@@ -323,8 +214,13 @@ function draw() {
   if (ball.y < 0 || ball.y + ball.h > canvas.height) {
     ball.sY *= -1;
   }
+  if (ball.x < 0 || ball.x + ball.w > canvas.width) {
+    ball.sX *= -1;
+  }
   // Don't let the paddles go off screen
-  [leftPaddle, rightPaddle].forEach(function(paddle) {
+  [leftPaddle, rightPaddle, rightMidPaddle, leftMidPaddle].forEach(function(
+    paddle
+  ) {
     if (paddle.y < 0) {
       paddle.y = 0;
     }
@@ -351,11 +247,15 @@ function draw() {
   }
 
   // Score if the ball goes past a paddle
-  if (ball.x < leftPaddle.x)  {
+  if (ball.x < leftPaddle.x && ball.y > 275 && ball.y < 475) {
     rightScore++;
     resetBall();
     ball.sY *= -1;
-  } else if (ball.x + ball.w > rightPaddle.x + rightPaddle.w) {
+  } else if (
+    ball.x + ball.w > rightPaddle.x + rightPaddle.w &&
+    ball.y > 275 &&
+    ball.y < 475
+  ) {
     leftScore++;
     resetBall();
     ball.sX *= -1;
@@ -365,15 +265,18 @@ function draw() {
 
   leftPaddle.draw();
   rightPaddle.draw();
+  leftMidPaddle.draw();
+  rightMidPaddle.draw();
+
   ball.draw();
 
   // Draw the scores
   ctx.fillStyle = "#000000";
-  ctx.font = "24px Graduate";
+  ctx.font = "35px Graduate";
   ctx.textAlign = "left";
-  ctx.fillText("Score: " + leftScore, 0, 20);
+  ctx.fillText("Score: " + leftScore, 30, 50);
   ctx.textAlign = "right";
-  ctx.fillText("Score: " + rightScore, canvas.width, 20);
+  ctx.fillText("Score: " + rightScore, canvas.width - 30, 50);
 
   // End the game or keep going
   if (leftScore === 10 || rightScore === 10) {

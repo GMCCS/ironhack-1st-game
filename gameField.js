@@ -123,12 +123,12 @@ let backgroundGrass = function() {
     ctx.closePath();
 
     //add in the 1st start game info
-    
+
     ctx.fillStyle = "#0F1010";
-    ctx.font = "50px Graduate";
+    ctx.font = "70px Graduate";
     ctx.textAlign = "center";
     ctx.fillText("BalizÀbaliza", canvas.width / 2, canvas.height / 4);
-    ctx.font = "30px Graduate";
+    ctx.font = "50px Graduate";
     ctx.fillText(
       "Click Anywhere to Start",
       canvas.width / 2,
