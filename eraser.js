@@ -118,5 +118,7 @@ function erase() {
     ctx.stroke();
     ctx.closePath();
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
   };
 }

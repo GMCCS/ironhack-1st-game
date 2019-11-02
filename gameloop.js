@@ -78,7 +78,7 @@ let rightScore = 0;
 
 // Create the ball
 let ballLength = 20;
-let ballSpeed = 10;
+let ballSpeed = 50;
 let ball = makeRect(0, 0, ballLength, ballLength, ballSpeed, "black");
 
 // Modify the ball object to have two speed properties, one for X and one for Y
@@ -185,8 +185,10 @@ function endGame() {
 
   if (rightScore === 10) {
     ctx.fillText("Sporting wins!", canvas.width / 2, canvas.height / 2);
+    mySound.play();
   } else if (leftScore === 10) {
     ctx.fillText("Benfica wins!", canvas.width / 2, canvas.height / 2);
+    mySound.play();
   }
 }
 
@@ -232,6 +234,7 @@ function draw() {
     }
   });
   // Bounce the ball off the paddles
+  // left paddle
   if (
     ball.y + ball.h / 2 >= leftPaddle.y &&
     ball.y + ball.h / 2 <= leftPaddle.y + leftPaddle.h
@@ -240,6 +243,7 @@ function draw() {
       bounceBall();
     }
   }
+  //right paddle
   if (
     ball.y + ball.h / 2 >= rightPaddle.y &&
     ball.y + ball.h / 2 <= rightPaddle.y + rightPaddle.h
@@ -266,12 +270,11 @@ function draw() {
 
   // Draw the paddles and ball
 
+  ball.draw();
   leftPaddle.draw();
   rightPaddle.draw();
   leftMidPaddle.draw();
   rightMidPaddle.draw();
-
-  ball.draw();
 
   // Draw the scores
   ctx.fillStyle = "#000000";

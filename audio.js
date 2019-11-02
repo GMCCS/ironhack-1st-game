@@ -12,8 +12,6 @@ function sound(src) {
       this.sound.pause();
     }
   }
-
-  let myMusic;
   let mySound;
 
   mySound = new sound("/audio/zapsplat_foley_whistle_two_tone_blow_ref_final_soccer_close_up_002_39343.mp3");
