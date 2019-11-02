@@ -4,7 +4,7 @@
 //adds in a background image with source = grass
 let backgroundGrass = function() {
   base_image = new Image();
-  base_image.src = "/images/Screenshot 2019-10-22 at 21.45.19.png";
+  base_image.src = "./images/Screenshot 2019-10-22 at 21.45.19.png";
   base_image.onload = function() {
     ctx.drawImage(base_image, 0, 0);
 
