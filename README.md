@@ -1,3 +1,5 @@
+permalink: /index.html
+
 # ironhack-1st-game
 
 We're prompted to do our 1st game using DOM elements and/or Canvas.
