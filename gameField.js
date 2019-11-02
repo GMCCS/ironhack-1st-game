@@ -122,7 +122,9 @@ let backgroundGrass = function() {
     ctx.stroke();
     ctx.closePath();
 
-    ctx.fillStyle = "black";
+    //add in the 1st start game info
+    
+    ctx.fillStyle = "#0F1010";
     ctx.font = "50px Graduate";
     ctx.textAlign = "center";
     ctx.fillText("BalizÀbaliza", canvas.width / 2, canvas.height / 4);
