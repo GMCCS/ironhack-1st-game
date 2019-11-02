@@ -1,4 +1,4 @@
-permalink: /index.html
+permalink: /gameHTML.html
 
 # ironhack-1st-game
 
