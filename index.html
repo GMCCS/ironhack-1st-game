@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Graduate'>
+    <link rel="stylesheet" href="gameCSS.css">
+
+    <title>BalizÀbaliza!</title>
+</head>
+
+<body>
+
+    <section class="info-left-div">
+        <div class="instructions-div">
+            Benfica:<br>Use the W and S to move your player!
+        </div>
+        <div class="arrows-div">
+            <img src="images/Benfica-icon.png" alt="keyboard arrows">
+            You're playing with Benfica!
+        </div>
+        <div class="objective-div">
+            The 1st player to score 10 goals WINS! <br> You will only score if the ball hits the actual BALIZA!
+        </div>
+    </section>
+
+    <section>
+        <canvas id="canvas-board" width="800" height="750" tabindex="1"></canvas>
+    </section>
+
+    <section class="info-right-div">
+        <div class="instructions-div">
+            Sporting:<br> Use the UP and DOWN to move your player!
+        </div>
+        <div class="arrows-div">
+            <img src="images/Sporting-CP-Lisbon-icon.png" alt="keyboard arrows">
+            You're playing with Sporting!
+        </div>
+        <div class="audio-div">
+            <p>Champions song</p>
+            <audio src="/audio/UEFA Champions League - Main Theme.mp3" controls>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="gameField.js"></script>
+    <script type="text/javascript" src="gameloop.js"></script>
+    <script type="text/javascript" src="audio.js"></script>
+    <script type="text/javascript" src="eraser.js"></script>
+
+
+</body>
+
+
+</html>
