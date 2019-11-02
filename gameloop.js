@@ -1,6 +1,9 @@
 let canvas = document.getElementById("canvas-board");
 let ctx = canvas.getContext("2d");
 
+let baseImage = new Image();
+baseImage.src = "./images/Screenshot 2019-10-22 at 21.45.19.png";
+
 // Key Codes
 let W = 87;
 let S = 83;

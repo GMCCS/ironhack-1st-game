@@ -3,8 +3,8 @@
 
 //adds in a background image with source = grass
 let backgroundGrass = function() {
-  base_image = new Image();
-  base_image.src = "./images/Screenshot 2019-10-22 at 21.45.19.png";
+  base_image = baseImage;
+  base_image.src = baseImage.src;
   base_image.onload = function() {
     ctx.drawImage(base_image, 0, 0);
 
@@ -106,7 +106,7 @@ let backgroundGrass = function() {
     ctx.strokeStyle = "white";
     ctx.fillStyle = "transparent";
     ctx.lineWidth = 5;
-    ctx.arc(50, canvas.height/2, 115, 0.75, 1.75 * Math.PI, true);
+    ctx.arc(50, canvas.height / 2, 115, 0.75, 1.75 * Math.PI, true);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
@@ -117,7 +117,7 @@ let backgroundGrass = function() {
     ctx.strokeStyle = "white";
     ctx.fillStyle = "transparent";
     ctx.lineWidth = 5;
-    ctx.arc(764, canvas.height/2, 115, 2.35, 1.25* Math.PI, false);
+    ctx.arc(764, canvas.height / 2, 115, 2.35, 1.25 * Math.PI, false);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
@@ -132,7 +132,7 @@ let backgroundGrass = function() {
     ctx.fillText(
       "Click Anywhere to Start",
       canvas.width / 2,
-      canvas.height - canvas.height/4
+      canvas.height - canvas.height / 4
     );
     canvas.addEventListener("click", startGame);
   };
