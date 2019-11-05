@@ -78,7 +78,7 @@ let rightScore = 0;
 
 // Create the ball
 let ballLength = 20;
-let ballSpeed = 50;
+let ballSpeed = 5;
 let ball = makeRect(0, 0, ballLength, ballLength, ballSpeed, "black");
 
 // Modify the ball object to have two speed properties, one for X and one for Y
