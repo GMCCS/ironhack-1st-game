@@ -78,7 +78,7 @@ let rightScore = 0;
 
 // Create the ball
 let ballLength = 20;
-let ballSpeed = 50;
+let ballSpeed = 10;
 let ball = makeRect(0, 0, ballLength, ballLength, ballSpeed, "black");
 
 // Modify the ball object to have two speed properties, one for X and one for Y
@@ -159,17 +159,9 @@ canvas.addEventListener("keyup", function(e) {
   }
 });
 
-// Show the menu
-function menu() {
-  // erase();
-  //show the field with Start
-  backgroundGrass();
-}
-
 // Start the game
 function startGame() {
   // Don't accept any more clicks
-
   canvas.removeEventListener("click", startGame);
 
   // Put the ball in place
@@ -243,12 +235,36 @@ function draw() {
       bounceBall();
     }
   }
+  //leftMidPaddle
+  if (
+    ball.y + ball.h / 2 >= leftMidPaddle.y &&
+    ball.y + ball.h / 2 <= leftMidPaddle.y + leftMidPaddle.h
+  ) {
+    if (
+      ball.x <= leftMidPaddle.x + leftMidPaddle.w &&
+      ball.x + ball.w >= leftMidPaddle.x
+    ) {
+      bounceBall();
+    }
+  }
   //right paddle
   if (
     ball.y + ball.h / 2 >= rightPaddle.y &&
     ball.y + ball.h / 2 <= rightPaddle.y + rightPaddle.h
   ) {
     if (ball.x + ball.w >= rightPaddle.x) {
+      bounceBall();
+    }
+  }
+  // rightMidPaddle
+  if (
+    ball.y + ball.h / 2 >= rightMidPaddle.y &&
+    ball.y + ball.h / 2 <= rightMidPaddle.y + rightMidPaddle.h
+  ) {
+    if (
+      ball.x + ball.w >= rightMidPaddle.x &&
+      ball.x <= rightMidPaddle.x + rightMidPaddle.w
+    ) {
       bounceBall();
     }
   }
@@ -277,7 +293,7 @@ function draw() {
   rightMidPaddle.draw();
 
   // Draw the scores
-  ctx.fillStyle = "#000000";
+  ctx.fillStyle = "white";
   ctx.font = "35px Graduate";
   ctx.textAlign = "left";
   ctx.fillText("Score: " + leftScore, 30, 50);
@@ -292,8 +308,8 @@ function draw() {
   }
 }
 
-// Show the menu to start the game
+// Show the Game start
 
-menu();
+backgroundGrass();
 
 canvas.focus();
