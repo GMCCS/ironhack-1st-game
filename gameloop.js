@@ -173,8 +173,6 @@ function startGame() {
 
 // Show the end game screen
 function endGame() {
-  erase();
-
   if (rightScore === 10) {
     ctx.fillText("Sporting wins!", canvas.width / 2, canvas.height / 2);
     mySound.play();
@@ -232,6 +230,7 @@ function draw() {
     ball.y + ball.h / 2 <= leftPaddle.y + leftPaddle.h
   ) {
     if (ball.x <= leftPaddle.x + leftPaddle.w) {
+      mySound2.play();
       bounceBall();
     }
   }
@@ -244,6 +243,7 @@ function draw() {
       ball.x <= leftMidPaddle.x + leftMidPaddle.w &&
       ball.x + ball.w >= leftMidPaddle.x
     ) {
+      mySound3.play();
       bounceBall();
     }
   }
@@ -253,6 +253,7 @@ function draw() {
     ball.y + ball.h / 2 <= rightPaddle.y + rightPaddle.h
   ) {
     if (ball.x + ball.w >= rightPaddle.x) {
+      mySound3.play();
       bounceBall();
     }
   }
@@ -265,12 +266,14 @@ function draw() {
       ball.x + ball.w >= rightMidPaddle.x &&
       ball.x <= rightMidPaddle.x + rightMidPaddle.w
     ) {
+      mySound2.play();
       bounceBall();
     }
   }
 
   // Score if the ball goes past a paddle
   if (ball.x < leftPaddle.x && ball.y > 275 && ball.y < 475) {
+    mySoundGoal2.play();
     rightScore++;
     resetBall();
     ball.sY *= -1;
@@ -279,6 +282,7 @@ function draw() {
     ball.y > 275 &&
     ball.y < 475
   ) {
+    mySoundGoal1.play();
     leftScore++;
     resetBall();
     ball.sX *= -1;
@@ -294,7 +298,7 @@ function draw() {
 
   // Draw the scores
   ctx.fillStyle = "white";
-  ctx.font = "35px Graduate";
+  ctx.font = "30px Graduate";
   ctx.textAlign = "left";
   ctx.fillText("Score: " + leftScore, 30, 50);
   ctx.textAlign = "right";
